@@ -5,13 +5,14 @@ const BooksItem = (props) => {
     return (
         <div className='book'>
             <div className= 'book__content'>
-                <strong>{props.book.id}. {props.book.title}</strong>
                 <div>
-                    {props.book.body}
+                    <img src={props.book.image} alt="image"/>
                 </div>
-            </div>
-            <div className='book__btns'>
-                <button>Delete</button>
+                <div>
+                    <p>{props.book.genre}</p>
+                    <p>{props.book.title}</p>
+                    <p>{props.book.author}</p>
+                </div>
             </div>
         </div>
     );

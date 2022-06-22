@@ -1,53 +1,56 @@
 import React, { useState } from "react";
 import './stylesheets/style.css';
-import BooksItem from './components/BooksItem';
 import BooksList from "./components/BooksList";
 
 function App() {
   const [books, setBooks] = useState( [
-    {id: 1, title: 'Rasputin', body: 'Description'},
-    {id: 2, title: 'Kitlyaev', body: 'Description'},
-    {id: 3, title: 'Garyaev', body: 'Description'},
-  ])
-
-  const [books2, setBooks2] = useState( [
-    {id: 1, title: 'Python - start to end', body: 'Description'},
-    {id: 2, title: 'JS for newbees', body: 'Description'},
-    {id: 3, title: 'Java easy', body: 'Description'},
+    {image: ('/src/assets/book.jpg') ,genre: 'Computers', title: 'How use keyboard', author: 'Genius Brain'},
+    {genre: 'Computers', title: 'Frontend road', author: 'Kitlyaev Dmitriy'},
+    {genre: 'Computers', title: 'JS basics', author: 'Frontend Markup'},
+    {genre: 'Computers', title: 'JavaScript', author: 'Script Java'},
   ])
 
   return (
     <div className="App">
-      <form className="search">
-        <input type="text" name="key" placeholder="Введите название книги"></input>
-        <button className="search-button">Поиск</button>
-      </form>
+      <div className="search">
 
-      <div className="form-wrapper">
-        <form className="filter">
-        <select className="genre" size="4">
-            <option value="all" selected="selected">All</option>
-            <option value="art">Art</option>
-            <option value="biography">Biography</option>
-            <option value="computers">Computers</option>
-            <option value="history">History</option>
-            <option value="medical">Medical</option>
-            <option value="poetry">Poetry</option>
-        </select>
-      </form>
+        <h1>Search for books</h1>
 
-      <form className="sorting">
-        <select className="genre" size="4">
-            <option value="relevance" selected="selected">Relevance</option>
-            <option value="newest">Newest</option>
-        </select>
-      </form>
-      </div> 
+        <form className="search-line">
+          <input type="text" name="key" placeholder="Введите название книги"></input>
+          <button className="search-button">Search</button>
+        </form>
 
-      <label className="counter" type="text">6</label>
+        <div className="selects-wrapper">
+          <p>Categories</p>
+          <form className="filter">
+            <select className="genre" size="4">
+                <option value="all" selected="selected">All</option>
+                <option value="art">Art</option>
+                <option value="biography">Biography</option>
+                <option value="computers">Computers</option>
+                <option value="history">History</option>
+                <option value="medical">Medical</option>
+                <option value="poetry">Poetry</option>
+            </select>
+          </form>
 
-      <BooksList books={books} title = 'Biography books'/>
-      <BooksList books={books2} title = 'Computers books'/>
+          <p>Sorting by</p>
+          <form className="sorting">            
+            <select className="genre" size="4">
+                <option value="relevance" selected="selected">Relevance</option>
+                <option value="newest">Newest</option>
+            </select>
+          </form>
+        </div> 
+
+      </div>
+
+      <label className="counter" type="text">Found 6 results</label>
+
+      <div className="books">
+        <BooksList books={books}/>
+      </div>
 
       <div className="pagination">
         <button>Load more</button>

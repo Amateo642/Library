@@ -13,9 +13,27 @@
     width: 800px;
 }
 
-.form-wrapper {
+.search {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(/src/assets/books.jpg) center no-repeat;
+    color:white;
+}    
+
+.search-button {
+    background: url(/src/assets/loupe.png) contain;
+}
+
+.selects-wrapper {
+    display: flex;
+    flex-direction: row;
     margin: 20px 0;
+}
+
+.selects-wrapper form {
+    overflow: hidden;
 }
 
 .search .search-button {
@@ -29,8 +47,12 @@
 .counter {
     display: flex;
     justify-content: center;
-    font-size: 25px;
     margin-bottom: 20px;
+}
+
+.books {
+    display: flex;
+    flex-direction: row;
 }
 
 .book {
