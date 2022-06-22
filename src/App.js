@@ -4,6 +4,10 @@ import BooksList from "./components/BooksList";
 
 function App() {
   const [books, setBooks] = useState( [
+    {image: 'https://storage.fabulae.ru/images/authors/10538/foto_96852.jpg' ,genre: 'Computers', title: 'How use keyboard', author: 'Genius Brain'},
+    {genre: 'Computers', title: 'Frontend road', author: 'Kitlyaev Dmitriy'},
+    {genre: 'Computers', title: 'JS basics', author: 'Frontend Markup'},
+    {genre: 'Computers', title: 'JavaScript', author: 'Script Java'},
     {image: ('/src/assets/book.jpg') ,genre: 'Computers', title: 'How use keyboard', author: 'Genius Brain'},
     {genre: 'Computers', title: 'Frontend road', author: 'Kitlyaev Dmitriy'},
     {genre: 'Computers', title: 'JS basics', author: 'Frontend Markup'},
@@ -48,10 +52,8 @@ function App() {
 
       <label className="counter" type="text">Found 6 results</label>
 
-      <div className="books">
-        <BooksList books={books}/>
-      </div>
-
+      <BooksList books={books}/>
+      
       <div className="pagination">
         <button>Load more</button>
       </div>

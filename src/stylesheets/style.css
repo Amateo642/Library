@@ -50,20 +50,6 @@
     margin-bottom: 20px;
 }
 
-.books {
-    display: flex;
-    flex-direction: row;
-}
-
-.book {
-    display: flex;
-    padding: 15px;
-    border: 2px solid teal;
-    margin-top: 15px;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .pagination {
     display: flex;
     justify-content: center;
