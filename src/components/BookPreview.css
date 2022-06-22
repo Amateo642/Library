@@ -1,0 +1,25 @@
+.book-preview {
+    margin-top: 50px;
+}
+
+.book-preview__content {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.book-preview-img {
+    background: #cacaca55;
+    text-align: center;
+    padding: 50px;
+    flex-basis: 50%;
+}
+
+.book-preview img {
+    width: 80%;
+}
+
+.book-preview-text {
+    padding: 20px;
+    line-height: 50px;
+}
