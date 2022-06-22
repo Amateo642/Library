@@ -10,20 +10,27 @@ function App() {
     {genre: 'Computers', title: 'Frontend road', author: 'Kitlyaev Dmitriy'},
     {genre: 'Computers', title: 'JS basics', author: 'Frontend Markup'},
     {genre: 'Computers', title: 'JavaScript', author: 'Script Java'},
-    {image: ('/src/assets/book.jpg') ,genre: 'Computers', title: 'How use keyboard', author: 'Genius Brain'},
+    {genre: 'Computers', title: 'How use keyboard', author: 'Genius Brain'},
     {genre: 'Computers', title: 'Frontend road', author: 'Kitlyaev Dmitriy'},
     {genre: 'Computers', title: 'JS basics', author: 'Frontend Markup'},
     {genre: 'Computers', title: 'JavaScript', author: 'Script Java'},
-  ])
+  ]);
+
+  const [selectedBook, setSelectedBook] = useState()
+
+  function handleBookSelect(book) {
+    setSelectedBook(book);
+  }
 
   return (
     <div className="App">
-      <Search />
+      {//<Search />
+      }
 
       <label className="counter" type="text">Found 6 results</label>
-
-      <BooksList books={books}/>
-      <BookPreview book={books[0]}/>
+      
+      {selectedBook ? (<BookPreview book={selectedBook}/>) : (<BooksList books={books} onBookSelect={handleBookSelect}/>)}
+      
       <div className="pagination">
         <button>Load more</button>
       </div>
