@@ -1,18 +1,35 @@
-import React from "react";
+import React, {useState} from "react";
 
-const Search = (props) => {
+const Search = () => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      setSearchValue('');
+    }
+  };
+
+  const handleChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+  
   return (
     <div className="search">
       <h1>Search for books</h1>
 
-      <form className="search-line">
+      <div className="search-line">
         <input
           type="text"
-          name="key"
+          name="message"
           placeholder="Введите название книги"
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          value={searchValue}
         ></input>
-        <button className="search-button">Search</button>
-      </form>
+        <button className="search-button" 
+          onClick={() => setSearchValue('')}
+        >Search</button>
+      </div>
 
       <div className="selects-wrapper">
         <p>Categories</p>

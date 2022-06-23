@@ -22,15 +22,18 @@ function App() {
     setSelectedBook(book);
   }
 
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    {/*fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
-    .then(json => console.log(json))
+    .then(json => console.log(json))*/
+    }
     
+
+
 
   return (
     <div className="App">
-      {//<Search />
-      }
+      <Search />
+      
 
       <label className="counter" type="text">Found 6 results</label>
       
