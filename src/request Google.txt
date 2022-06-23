@@ -1,0 +1,96 @@
+Идентификаторы Google Книг
+Вам необходимо указать поля ID с определенными вызовами методов API. В Google Книгах используются идентификаторы трех типов:
+
+Идентификатор тома
+При просмотре определенного тома на сайте вы можете найти идентификатор тома в параметре id URL. Вот пример:
+https://books.google.com/ebooks?id=buc0AAAAMAAJ&dq=holmes&as_brr=4&source=webstore_bookcard
+
+Идентификатор книжной полки
+При просмотре конкретной книжной полки на сайте вы можете найти идентификатор книжной полки в параметре as_coll URL. Вот пример:
+https://books.google.com/books?hl=en&as_coll=0&num=10&uid=11122233344455566778&source=gbs_slider_cls_metadata_0_mylibrary
+
+Числовые значения, присвоенные книжной полке в пользовательской библиотеке. Google предоставляет несколько предопределенных полок для каждого пользователя со следующими идентификаторами:
+Favorites: 0
+Purchased: 1
+To Read: 2
+Reading Now: 3
+Have Read: 4
+Reviewed: 5
+Recently Viewed: 6
+My eBooks: 7
+Books For You: 8 Если у нас нет рекомендаций для пользователя, этой полки не существует.
+
+
+
+ID пользователя
+При просмотре вашей библиотеки на сайте вы можете найти идентификатор пользователя в параметре uid URL. Вот пример:
+https://books.google.com/books?uid=11122233344455566778&source=gbs_lp_bookshelf_list
+
+
+
+
+Выполнение поиска
+Вы можете выполнить поиск томов, отправив HTTP-запрос GET на следующий URI:
+
+
+https://www.googleapis.com/books/v1/volumes?q=search+terms
+Этот запрос имеет один обязательный параметр:
+
+q — поиск томов, содержащих эту текстовую строку. Существуют специальные ключевые слова, которые вы можете указать в условиях поиска для поиска в определенных полях, например:
+intitle: возвращает результаты, в которых текст, следующий за этим ключевым словом, находится в заголовке.
+inauthor: возвращает результаты, в которых текст, следующий за этим ключевым словом, найден у автора.
+inpublisher: возвращает результаты, в которых текст, следующий за этим ключевым словом, найден в издателе.
+тема: возвращает результаты, в которых текст, следующий за этим ключевым словом, указан в списке категорий тома.
+isbn: возвращает результаты, в которых текст, следующий за этим ключевым словом, является номером ISBN.
+lccn: возвращает результаты, в которых текст, следующий за этим ключевым словом, является контрольным номером Библиотеки Конгресса.
+oclc: возвращает результаты, в которых текст, следующий за этим ключевым словом, является номером центра компьютерной онлайн-библиотеки.
+
+Пример поиска Daniel Keyes' "Flowers for Algernon":
+
+GET https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey
+
+Если запрос выполнен успешно, сервер отвечает кодом состояния HTTP 200 OK, и результаты тома:
+
+200 OK
+
+{
+ "kind": "books#volumes",
+ "items": [
+  {
+   "kind": "books#volume",
+   "id": "_ojXNuzgHRcC",
+   "etag": "OTD2tB19qn4",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/_ojXNuzgHRcC",
+   "volumeInfo": {
+    "title": "Flowers",
+    "authors": [
+     "Vijaya Khisty Bodach"
+    ],
+   ...
+  },
+  {
+   "kind": "books#volume",
+   "id": "RJxWIQOvoZUC",
+   "etag": "NsxMT6kCCVs",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/RJxWIQOvoZUC",
+   "volumeInfo": {
+    "title": "Flowers",
+    "authors": [
+     "Gail Saunders-Smith"
+    ],
+    ...
+  },
+  {
+   "kind": "books#volume",
+   "id": "zaRoX10_UsMC",
+   "etag": "pm1sLMgKfMA",
+   "selfLink": "https://www.googleapis.com/books/v1/volumes/zaRoX10_UsMC",
+   "volumeInfo": {
+    "title": "Flowers",
+    "authors": [
+     "Paul McEvoy"
+    ],
+    ...
+  },
+  "totalItems": 3
+}
