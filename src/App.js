@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './stylesheets/style.css';
 import BooksList from "./components/BooksList";
 import Search from "./components/Search";
@@ -22,6 +22,11 @@ function App() {
     setSelectedBook(book);
   }
 
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => response.json())
+    .then(json => console.log(json))
+    
+
   return (
     <div className="App">
       {//<Search />
@@ -34,6 +39,7 @@ function App() {
       <div className="pagination">
         <button>Load more</button>
       </div>
+
     </div>
   );
 }
