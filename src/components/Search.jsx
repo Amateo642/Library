@@ -20,12 +20,11 @@ const Search = () => {
       <div className="search-line">
         <input
           type="text"
-          name="message"
           placeholder="Введите название книги"
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           value={searchValue}
-        ></input>
+        />
         <button className="search-button" 
           onClick={() => setSearchValue('')}
         >Search</button>
