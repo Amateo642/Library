@@ -23,7 +23,9 @@ function App() {
     setSelectedBook(book);
   }
 
-
+  function handleOnSearch(onSearch) {
+    return console.log(onSearch);
+  }
 
   useEffect(() => {
     getBooksByTitle('/users');
@@ -37,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      <Search />
+      <Search onSearch={handleOnSearch}/>
       
       <label className="counter" type="text">Found 6 results</label>
       

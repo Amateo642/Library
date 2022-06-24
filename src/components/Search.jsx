@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 
-const Search = () => {
+const Search = ({onSearch}) => {
   const [searchValue, setSearchValue] = useState("");
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      setSearchValue('');
+      onSearch(event.target.value);
     }
   };
 
