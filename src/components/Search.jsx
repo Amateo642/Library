@@ -5,7 +5,7 @@ const Search = ({onSearch}) => {
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      onSearch(event.target.value);
+      onSearch(searchValue);
     }
   };
 

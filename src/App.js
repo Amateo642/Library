@@ -23,8 +23,8 @@ function App() {
     setSelectedBook(book);
   }
 
-  function handleOnSearch(onSearch) {
-    return console.log(onSearch);
+  function handleSearch(searchValue) {
+    console.log(searchValue);
   }
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      <Search onSearch={handleOnSearch}/>
+      <Search onSearch={handleSearch}/>
       
       <label className="counter" type="text">Found 6 results</label>
       
@@ -47,10 +47,6 @@ function App() {
       
       <div className="pagination">
         <button>Load more</button>
-      </div>
-
-      <div>
-        <getBooksByTitle />
       </div>
 
     </div>
