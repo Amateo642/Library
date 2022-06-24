@@ -17,7 +17,7 @@ function App() {
     {genre: 'Computers', title: 'JavaScript', author: 'Script Java'},
   ]);
 
-  const [selectedBook, setSelectedBook] = useState()
+  const [selectedBook, setSelectedBook] = useState();
 
   function handleBookSelect(book) {
     setSelectedBook(book);
@@ -28,13 +28,8 @@ function App() {
   }
 
   useEffect(() => {
-    getBooksByTitle('/users');
-  }, []);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(response => response.json())
-    .then(json => console.log(json))
+    getBooksByTitle('вапвыапывапывапывап')
+      .then(books => console.log(books));
   }, []);
 
   return (
