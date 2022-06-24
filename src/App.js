@@ -3,6 +3,7 @@ import './stylesheets/style.css';
 import BooksList from "./components/BooksList";
 import Search from "./components/Search";
 import BookPreview from "./components/BookPreview";
+import { getBooksByTitle } from "./api/booksApi";
 
 function App() {
   const [books, setBooks] = useState( [
@@ -22,25 +23,31 @@ function App() {
     setSelectedBook(book);
   }
 
+  
+
+  useEffect(() => {
+    getBooksByTitle('/users');
+  }, []);
+
     {/*fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
     .then(json => console.log(json))*/
     }
-    
-
-
 
   return (
     <div className="App">
       <Search />
       
-
       <label className="counter" type="text">Found 6 results</label>
       
       {selectedBook ? (<BookPreview book={selectedBook}/>) : (<BooksList books={books} onBookSelect={handleBookSelect}/>)}
       
       <div className="pagination">
         <button>Load more</button>
+      </div>
+
+      <div>
+        <getBooksByTitle />
       </div>
 
     </div>
