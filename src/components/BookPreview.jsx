@@ -6,12 +6,12 @@ const BookPreview = (props) => {
       <div className="book-preview">
         <div className="book-preview__content">
           <div className="book-preview-img">
-            <img src={props.book.image} alt="image" />
+            <img src={props.book.imageLinks.thumbnail} alt="image" />
           </div>
           <div className="book-preview-text">
-            <p>{props.book.genre}</p>
+            <p>{props.book.categories}</p>
             <p>{props.book.title}</p>
-            <p>{props.book.author}</p>
+            <p>{props.book.authors}</p>
           </div>
         </div>
       </div>

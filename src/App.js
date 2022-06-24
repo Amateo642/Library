@@ -6,16 +6,7 @@ import BookPreview from "./components/BookPreview";
 import { getBooksByTitle } from "./api/booksApi";
 
 function App() {
-  const [books, setBooks] = useState( [
-    {image: 'https://storage.fabulae.ru/images/authors/10538/foto_96852.jpg' ,genre: 'Computers', title: 'How use keyboard', author: 'Genius Brain'},
-    {genre: 'Computers', title: 'Frontend road', author: 'Kitlyaev Dmitriy'},
-    {genre: 'Computers', title: 'JS basics', author: 'Frontend Markup'},
-    {genre: 'Computers', title: 'JavaScript', author: 'Script Java'},
-    {genre: 'Computers', title: 'How use keyboard', author: 'Genius Brain'},
-    {genre: 'Computers', title: 'Frontend road', author: 'Kitlyaev Dmitriy'},
-    {genre: 'Computers', title: 'JS basics', author: 'Frontend Markup'},
-    {genre: 'Computers', title: 'JavaScript', author: 'Script Java'},
-  ]);
+  const [books, setBooks] = useState([]);
 
   const [selectedBook, setSelectedBook] = useState();
 
@@ -23,15 +14,16 @@ function App() {
     setSelectedBook(book);
   }
 
-  function handleSearch(searchValue) {
-    console.log(searchValue);
+  function handleSearch(title) {
+    getBooksByTitle(title)
+    .then(books => setBooks(books));
   }
-
+/*
   useEffect(() => {
-    getBooksByTitle('вапвыапывапывапывап')
+    getBooksByTitle('Гарри Поттер')
       .then(books => console.log(books));
   }, []);
-
+*/
   return (
     <div className="App">
       <Search onSearch={handleSearch}/>

@@ -19,7 +19,15 @@ export const getBooksByTitle = (title) => {
                         imageLinks: info.imageLinks,
                         categories: info.categories,
                         title: info.title,
-                    });
+                    })/*.map(
+                        (() => {
+                            const image = info.imageLinks;
+                            return ({
+                                small: image.smallthumbnail,
+                                norm: image.thumbnail,
+                            })
+                        })
+                   )*/ 
                 })
         });
 }
