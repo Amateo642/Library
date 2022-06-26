@@ -1,6 +1,7 @@
 .book {
     padding: 16px;
     background: #cacaca55;
+    word-break: break-word;
 }
 
 .book-img {

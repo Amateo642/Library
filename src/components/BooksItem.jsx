@@ -6,7 +6,7 @@ const BooksItem = ({book, onBookSelect}) => {
       <div className="book" onClick={() => onBookSelect(book)}>
         <div className="book__content">
           <div className="book-img">
-            <img src={book.imageLinks} alt="image" />
+            <img src={book.smallThumbnail} alt="image" />
           </div>
           <div>
             <p>{book.categories}</p>

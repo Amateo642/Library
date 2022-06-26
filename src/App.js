@@ -18,17 +18,12 @@ function App() {
     getBooksByTitle(title)
     .then(books => setBooks(books));
   }
-/*
-  useEffect(() => {
-    getBooksByTitle('Гарри Поттер')
-      .then(books => console.log(books));
-  }, []);
-*/
+
   return (
     <div className="App">
       <Search onSearch={handleSearch}/>
       
-      <label className="counter" type="text">Found 6 results</label>
+      <label className="counter" type="text">Found {books.length} results</label>
       
       {selectedBook ? (<BookPreview book={selectedBook}/>) : (<BooksList books={books} onBookSelect={handleBookSelect}/>)}
       

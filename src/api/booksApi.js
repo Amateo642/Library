@@ -13,21 +13,23 @@ export const getBooksByTitle = (title) => {
             return json.items 
                 .map(item => {
                     const info = item.volumeInfo;
-                    
+                    if (info.imageLinks) {
                     return ({
                         authors: info.authors,
-                        imageLinks: info.imageLinks,
+                        thumbnail: info.imageLinks.thumbnail,
+                        smallThumbnail: info.imageLinks.smallThumbnail,
                         categories: info.categories,
                         title: info.title,
-                    })/*.map(
-                        (() => {
-                            const image = info.imageLinks;
-                            return ({
-                                small: image.smallthumbnail,
-                                norm: image.thumbnail,
-                            })
-                        })
-                   )*/ 
+                    }) 
+                } else {
+                     return ({
+                        authors: info.authors,
+                        thumbnail: undefined,
+                        smallThumbnail: undefined,
+                        categories: info.categories,
+                        title: info.title,
+                    })
+                }                         
                 })
         });
 }
