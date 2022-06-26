@@ -33,7 +33,7 @@ const Search = ({onSearch}) => {
       <div className="selects-wrapper">
         <p>Categories</p>
         <form className="filter">
-          <select className="genre" size="4">
+          <select className="genre" size="1">
             <option value="all" selected="selected">
               All
             </option>
@@ -48,7 +48,7 @@ const Search = ({onSearch}) => {
 
         <p>Sorting by</p>
         <form className="sorting">
-          <select className="genre" size="4">
+          <select className="genre" size="1">
             <option value="relevance" selected="selected">
               Relevance
             </option>

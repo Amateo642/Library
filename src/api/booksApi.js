@@ -1,35 +1,35 @@
 import { APIKey } from "../secrets";
 
 const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
-const apiKeyParam = '&key=' + APIKey;
+const apiKeyParam = '&maxResults=30&key=' + APIKey;
 
 export const getBooksByTitle = (title) => {
     return fetch(apiUrl + title + apiKeyParam)
         .then(response => response.json()) 
-        .then(json => { 
-            if (!json || json.totalItems === 0) {
-                return [];
+        .then(json => {
+            const res = {
+                totalBooks: 0,
+                books: []
             }
-            return json.items 
+            if (!json || json.totalItems === 0) {
+                return res;
+            }
+
+            res.totalBooks = json.totalItems;
+            res.books = json.items
                 .map(item => {
                     const info = item.volumeInfo;
-                    if (info.imageLinks) {
+                    const thumbnail = info.imageLinks && info.imageLinks.thumbnail;
+                    const smallThumbnail = info.imageLinks && info.imageLinks.smallThumbnail;
                     return ({
                         authors: info.authors,
-                        thumbnail: info.imageLinks.thumbnail,
-                        smallThumbnail: info.imageLinks.smallThumbnail,
+                        thumbnail: thumbnail,
+                        smallThumbnail: smallThumbnail,
                         categories: info.categories,
                         title: info.title,
-                    }) 
-                } else {
-                     return ({
-                        authors: info.authors,
-                        thumbnail: undefined,
-                        smallThumbnail: undefined,
-                        categories: info.categories,
-                        title: info.title,
-                    })
-                }                         
-                })
+                        id: item.id
+                    });
+                });
+            return res;
         });
-}
+};    
