@@ -12,6 +12,8 @@ function App() {
 
   const [selectedBook, setSelectedBook] = useState();
 
+  //const [loading, setLoading] = useState(false);
+
   function handleBookSelect(book) {
     setSelectedBook(book);
   }
@@ -24,6 +26,15 @@ function App() {
       });    
   }
 
+  /*useEffect(() => {
+    setTimeout(() => {
+
+    }, 300)
+    return () => {
+      <p>Loading...</p>
+    }
+  },[loading])*/
+
   return (
     <div className="App">
       <Search onSearch={handleSearch}/>
@@ -32,10 +43,10 @@ function App() {
 
       {selectedBook ? (<BookPreview book={selectedBook}/>) : (<BooksList books={books} onBookSelect={handleBookSelect} />)}
       
-      {books.length > 29 && 
-        <div className="pagination">
+      {totalBooks > 30 && books.length + 1 ?
+        (<div className="pagination">
           <button>Load more</button>
-        </div>
+        </div>) : (console.log('нет книг'))
       }
     </div>
   );
