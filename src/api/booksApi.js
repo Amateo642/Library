@@ -10,7 +10,7 @@ export const getBooksByTitle = (title) => {
             const res = {
                 totalBooks: 0,
                 books: []
-            }
+            } 
             if (!json || json.totalItems === 0) {
                 return res;
             }
@@ -27,6 +27,7 @@ export const getBooksByTitle = (title) => {
                         smallThumbnail: smallThumbnail,
                         categories: info.categories,
                         title: info.title,
+                        description: info.description,
                         id: item.id
                     });
                 });

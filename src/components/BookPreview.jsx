@@ -12,6 +12,9 @@ const BookPreview = ({book}) => {
             <p>{book.categories}</p>
             <p>{book.title}</p>
             <p>{book.authors}</p>
+            <div>
+              <p>{book.description}</p>
+            </div>
           </div>
         </div>
       </div>
