@@ -6,8 +6,8 @@ const BooksList = ({books, onBookSelect}) => {
     return (
       <div className="books">
         {books.map((book) => (
-          <div className="book-wrapper">
-            <BooksItem book={book} key={book.id} onBookSelect={onBookSelect} />
+          <div className="book-wrapper" key={book.id}>
+            <BooksItem book={book} onBookSelect={onBookSelect} />
           </div>
         ))}
       </div>
