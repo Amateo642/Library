@@ -32,10 +32,11 @@ function App() {
 
       {selectedBook ? (<BookPreview book={selectedBook}/>) : (<BooksList books={books} onBookSelect={handleBookSelect} />)}
       
-      <div className="pagination">
-        <button>Load more</button>
-      </div>
-
+      {books.length > 29 && 
+        <div className="pagination">
+          <button>Load more</button>
+        </div>
+      }
     </div>
   );
 }
