@@ -14,11 +14,14 @@ function App() {
 
   const [loading, setLoading] = useState(false);
 
+  const [searchValue, setSearchValue] = useState('');
+
   function handleBookSelect(book) {
     setSelectedBook(book);
   }
 
   function handleSearch(title) {
+    setSearchValue(title);
     setLoading(true);
     getBooksByTitle(title)
       .then(({books, totalBooks}) => {
@@ -28,19 +31,28 @@ function App() {
       });
   }
 
+  function handleLoadMore() {
+    setLoading(true);
+    getBooksByTitle(searchValue, books.length)
+      .then(({books: newBooks}) => {
+        setBooks(books.concat(newBooks));
+        setLoading(false);
+      });
+  }
+
   return (
     <div className="App">
       <Search onSearch={handleSearch}/>
 
-      {loading && <div><p>Loading...</p></div>}
-
       {totalBooks !== undefined && <label>Found {totalBooks} books</label>}
 
       {selectedBook ? (<BookPreview book={selectedBook}/>) : (<BooksList books={books} onBookSelect={handleBookSelect} />)}
-      
+
+      {loading && <div><p>Loading...</p></div>}
+
       {totalBooks - books.length > 0 && 
         <div className="pagination">
-          <button>Load more</button>
+          <button onClick={handleLoadMore}>Load more</button>
         </div>
       }
     </div>

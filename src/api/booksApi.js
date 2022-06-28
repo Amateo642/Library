@@ -1,10 +1,13 @@
 import { APIKey } from "../secrets";
 
 const apiUrl = 'https://www.googleapis.com/books/v1/volumes?q=';
-const apiKeyParam = '&maxResults=30&key=' + APIKey;
+const apiKeyParam = '&key=' + APIKey;
+const startParam = '&startIndex=';
+const maxResult = '&maxResults=30';
 
-export const getBooksByTitle = (title) => {
-    return fetch(apiUrl + title + apiKeyParam)
+export const getBooksByTitle = (title, startIndex = 0) => {
+    const url = apiUrl + title + maxResult + startParam + startIndex + apiKeyParam;
+    return fetch(url)
         .then(response => response.json()) 
         .then(json => {
             const res = {
