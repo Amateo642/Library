@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import './Search.css';
 
 const Search = ({onSearch}) => {
   const [searchValue, setSearchValue] = useState("");
@@ -25,9 +26,9 @@ const Search = ({onSearch}) => {
           onKeyDown={handleKeyDown}
           value={searchValue}
         />
-        <button className="search-button" 
-          onClick={() => setSearchValue('')}
-        >Search</button>
+        <div className="loupe" onClick={() => setSearchValue("")}>
+          <img src="https://cdn-icons-png.flaticon.com/512/751/751463.png" alt="loupe"/>
+        </div>
       </div>
 
       <div className="selects-wrapper">

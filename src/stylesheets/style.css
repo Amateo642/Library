@@ -13,19 +13,6 @@
     width: 800px;
 }
 
-.search {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: url(/src/assets/books.jpg) center no-repeat;
-    color:white;
-}    
-
-.search-button {
-    background: url(/src/assets/loupe.png) contain;
-}
-
 .selects-wrapper {
     display: flex;
     margin: 20px 0;
@@ -33,10 +20,6 @@
 
 .selects-wrapper form {
     overflow: hidden;
-}
-
-.search .search-button {
-    margin-left: 5px;
 }
 
 .filter {

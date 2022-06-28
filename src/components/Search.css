@@ -1,0 +1,24 @@
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(/src/assets/books.jpg) center no-repeat;
+    color: white;
+}
+
+.search-line {
+    display: flex;
+    position: relative;
+}
+
+.loupe {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    margin: 2px;
+}
+
+.loupe img {
+    width: 13px;
+}
