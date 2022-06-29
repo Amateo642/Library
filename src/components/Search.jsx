@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './Search.css';
+import loupe from '../assets/loupe.png';
 
 const Search = ({onSearch}) => {
   const [searchValue, setSearchValue] = useState("");
@@ -26,8 +27,8 @@ const Search = ({onSearch}) => {
           onKeyDown={handleKeyDown}
           value={searchValue}
         />
-        <div className="loupe" onClick={() => setSearchValue("")}>
-          <img src="https://cdn-icons-png.flaticon.com/512/751/751463.png" alt="loupe"/>
+        <div className="loupe" onClick={() => onSearch(searchValue)}>
+          <img src={loupe} alt="loupe"/>
         </div>
       </div>
 
