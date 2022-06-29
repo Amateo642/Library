@@ -4,6 +4,7 @@ import Search from "./components/Search";
 import BooksList from "./components/BooksList";
 import BookPreview from "./components/BookPreview";
 import { getBooksByTitle } from "./api/booksApi";
+import Preloader from "./components/Preloader";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -48,8 +49,8 @@ function App() {
 
       {selectedBook ? (<BookPreview book={selectedBook}/>) : (<BooksList books={books} onBookSelect={handleBookSelect} />)}
 
-      {loading && <div><p>Loading...</p></div>}
-
+      {loading && <div><Preloader/></div>}
+      
       {totalBooks - books.length > 0 && 
         <div className="pagination">
           <button onClick={handleLoadMore}>Load more</button>
