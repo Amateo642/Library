@@ -24,6 +24,8 @@ export const getBooksByTitle = (title, startIndex = 0) => {
                     const info = item.volumeInfo;
                     const thumbnail = info.imageLinks && info.imageLinks.thumbnail;
                     const smallThumbnail = info.imageLinks && info.imageLinks.smallThumbnail;
+                    const categories = info.categories && info.categories[0];
+                    const category = categories && categories.split(' ', 1);
                     return ({
                         authors: info.authors,
                         thumbnail: thumbnail,
@@ -31,7 +33,8 @@ export const getBooksByTitle = (title, startIndex = 0) => {
                         categories: info.categories,
                         title: info.title,
                         description: info.description,
-                        id: item.id
+                        id: item.id,
+                        genre: category
                     });
                 });
             return res;

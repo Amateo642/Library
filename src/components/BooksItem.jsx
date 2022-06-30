@@ -9,7 +9,7 @@ const BooksItem = ({book, onBookSelect}) => {
             <img src={book.smallThumbnail} alt="image" />
           </div>
           <div>
-            <p>{book.categories}</p>
+            <p>{book.genre}</p>
             <p>{book.title}</p>
             <p>{book.authors}</p>
           </div>
