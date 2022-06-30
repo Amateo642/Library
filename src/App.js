@@ -49,9 +49,9 @@ function App() {
 
       {selectedBook ? (<BookPreview book={selectedBook}/>) : (<BooksList books={books} onBookSelect={handleBookSelect} />)}
 
-      {loading && <div><Preloader/></div>}
+      {loading && <Preloader/> }
       
-      {totalBooks - books.length > 0 && 
+      {totalBooks - books.length > 0 && !loading &&
         <div className="pagination">
           <button onClick={handleLoadMore}>Load more</button>
         </div>
