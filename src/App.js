@@ -1,55 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import './stylesheets/style.css';
 import Search from "./components/Search";
 import BooksList from "./components/BooksList";
 import BookPreview from "./components/BookPreview";
-import { getBooksByTitle } from "./api/booksApi";
 import Preloader from "./components/Preloader";
+import { useDispatch, useSelector } from "react-redux";
+import { selectBookAction } from "./store/store";
+import { getBooksByTitleAction, getMoreBooksAction } from "./store/asyncActions";
 
 function App() {
-  const [books, setBooks] = useState([]);
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.loading);
+  const books = useSelector(state => state.books);
+  const totalBooks = useSelector(state => state.totalBooks);
+  const selectedBook = useSelector(state => state.selectedBook);
 
-  const [totalBooks, setTotalBooks] = useState();
-
-  const [selectedBook, setSelectedBook] = useState();
-
-  const [loading, setLoading] = useState(false);
-
-  const [searchValue, setSearchValue] = useState('');
 
   function handleBookSelect(book) {
-    setSelectedBook(book);
-  }
-
-  function handleSearch(title) {
-    setSearchValue(title);
-    setLoading(true);
-    getBooksByTitle(title)
-      .then(({books, totalBooks}) => {
-        setBooks(books);
-        setTotalBooks(totalBooks);
-        setLoading(false);
-      });
+    dispatch(selectBookAction(book))
   }
 
   function handleLoadMore() {
-    setLoading(true);
-    getBooksByTitle(searchValue, books.length)
-      .then(({books: newBooks}) => {
-        setBooks(books.concat(newBooks));
-        setLoading(false);
-      });
+   dispatch(getMoreBooksAction())
   }
 
   return (
     <div className="App">
-      <Search onSearch={handleSearch}/>
+      <Search />
 
       {totalBooks !== undefined && <label>Found {totalBooks} books</label>}
 
       {selectedBook ? (<BookPreview book={selectedBook}/>) : (<BooksList books={books} onBookSelect={handleBookSelect} />)}
 
-      {loading && <Preloader/> }
+      {loading && <Preloader /> }
       
       {totalBooks - books.length > 0 && !loading &&
         <div className="pagination">

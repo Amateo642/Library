@@ -1,18 +1,22 @@
-import React, {useState} from "react";
+import React from "react";
 import './Search.css';
 import loupe from '../assets/loupe.png';
+import { getBooksByTitleAction } from "../store/asyncActions";
+import { searchValueAction } from "../store/store";
+import { useDispatch, useSelector } from "react-redux";
 
-const Search = ({onSearch}) => {
-  const [searchValue, setSearchValue] = useState("");
+const Search = () => {
+  const dispatch = useDispatch();
+  const searchValue = useSelector(state => state.searchValue);
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      onSearch(searchValue);
+      dispatch(getBooksByTitleAction(searchValue)) // dispatch searchValueAction и dispatch getBooksByTitleAction
     }
   };
 
   const handleChange = (event) => {
-    setSearchValue(event.target.value);
+    dispatch(searchValueAction(event.target.value));  
   };
   
   return (
@@ -27,7 +31,7 @@ const Search = ({onSearch}) => {
           onKeyDown={handleKeyDown}
           value={searchValue}
         />
-        <div className="loupe" onClick={() => onSearch(searchValue)}>
+        <div className="loupe" onClick={() => dispatch(getBooksByTitleAction(searchValue))}>
           <img src={loupe} alt="loupe"/>
         </div>
       </div>
