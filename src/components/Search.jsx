@@ -5,20 +5,20 @@ import { getBooksByTitleAction } from "../store/asyncActions";
 import { searchValueAction } from "../store/store";
 import { useDispatch, useSelector } from "react-redux";
 
-const Search = () => {
-  const dispatch = useDispatch();
-  const searchValue = useSelector(state => state.searchValue);
+const Search = () => { //делаем поиск
+  const dispatch = useDispatch(); //создали диспач
+  const searchValue = useSelector(state => state.searchValue); //запрос
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      dispatch(getBooksByTitleAction(searchValue)) // dispatch searchValueAction и dispatch getBooksByTitleAction
+  const handleKeyDown = (event) => { //обработчик на кнопку интер
+    if (event.key === "Enter") { //при условии что нажали интер
+      dispatch(getBooksByTitleAction(searchValue)) //передали экшн с запросом
     }
   };
 
-  const handleChange = (event) => {
-    dispatch(searchValueAction(event.target.value));  
+  const handleChange = (event) => { //обработчик изменений в инпуте
+    dispatch(searchValueAction(event.target.value)); //передали экшн с запросом 
   };
-  
+        //render
   return (
     <div className="search">
       <h1>Search for books</h1>

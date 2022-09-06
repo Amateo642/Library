@@ -8,22 +8,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectBookAction } from "./store/store";
 import { getBooksByTitleAction, getMoreBooksAction } from "./store/asyncActions";
 
-function App() {
-  const dispatch = useDispatch();
-  const loading = useSelector(state => state.loading);
+function App() { //приложение
+  const dispatch = useDispatch(); //создали диспач чтобы изменить состояние. В него передается экшн. То как менять состояние определенно внутри редюсера
+  const loading = useSelector(state => state.loading);//с помощью хука который принимает ф-цию, которая в свою очередь принимает состояние, получили нужные переменные
   const books = useSelector(state => state.books);
   const totalBooks = useSelector(state => state.totalBooks);
   const selectedBook = useSelector(state => state.selectedBook);
 
 
-  function handleBookSelect(book) {
-    dispatch(selectBookAction(book))
+  function handleBookSelect(book) { //обработчик выбранной книги
+    dispatch(selectBookAction(book)) //передали экшн с книгой
   }
 
-  function handleLoadMore() {
-   dispatch(getMoreBooksAction())
+  function handleLoadMore() { //обработчик загрузки дополнительных книг
+   dispatch(getMoreBooksAction()) //передали экшн доп.книг
   }
-
+            //render
   return (
     <div className="App">
       <Search />
@@ -44,3 +44,8 @@ function App() {
 }
 
 export default App;
+//пройтись по коду, прокомментировать
+//кнопка лоад мор и тотал букс в превью. Стилизовать превью
+//фильтр и сортировка.
+//адаптив
+//TypeScript

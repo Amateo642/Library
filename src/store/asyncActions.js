@@ -1,7 +1,7 @@
 import {getBooksByTitle} from "../api/booksApi"
 import { booksAction, searchValueAction, loadingAction, totalBooksAction } from "./store";
 
-export const getBooksByTitleAction = (title) => {
+export const getBooksByTitleAction = (title) => { //по запросу получаем книги
   return function(dispatch) {
       dispatch(searchValueAction(title));
       dispatch(loadingAction(true));
@@ -14,7 +14,7 @@ export const getBooksByTitleAction = (title) => {
   }
 }
 
-export const getMoreBooksAction = () => {
+export const getMoreBooksAction = () => { // получить больше книг.
     return function(dispatch, getState) {
       const {searchValue, books} = getState();
         dispatch(loadingAction(true));

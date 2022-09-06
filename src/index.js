@@ -6,7 +6,7 @@ import { store } from "./store/store";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Provider store={store}>
+    <Provider store={store}> 
         <App/>
-    </Provider>
+    </Provider>//связали реакт с редаксом провайдером. принимает стор, т.е. прокидывает в компоненты состояние в которых мы его используем.
 );
