@@ -4,12 +4,23 @@
     justify-content: center;
     align-items: center;
     background: url(/src/assets/books.jpg) center no-repeat;
+    background-size: cover;
     color: white;
+}
+
+.search h1 {
+    margin-top: 20px;
 }
 
 .search-line {
     display: flex;
     position: relative;
+    margin-top: 20px;
+}
+
+.search-line input {
+    border-radius: .5em;
+    text-indent: 5px;
 }
 
 .loupe {
@@ -21,4 +32,13 @@
 
 .loupe img {
     width: 13px;
+}
+
+.genre {
+    margin-left: 5px;
+    color: #444; 
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04); 
+    border-radius: .5em;
+    outline: none; 
 }

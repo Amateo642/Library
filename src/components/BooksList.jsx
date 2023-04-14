@@ -3,6 +3,7 @@ import BooksItem from "./BooksItem";
 import './BooksList.css';
 
 const BooksList = ({books, onBookSelect}) => {
+  // TODO здесь отфильтровать книги по жанру. 
     return (
       <div className="books">
         {books.map((book) => (

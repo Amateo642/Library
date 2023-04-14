@@ -8,21 +8,27 @@ const defaultState = { //дефолтное состояние, присваив
     selectedBook: undefined,
     loading: false,
     searchValue: "",
+    orderBy: 'relevance',
+    error: false
 };
 
 const SELECT_BOOK = "SELECT_BOOK";
-const BOOKS = "GET_BOOK";
+const SET_BOOKS = "SET_BOOKS";
+const ADD_BOOKS = "ADD_BOOKS";
 const TOTALBOOKS = "GET_TOTAL_BOOKS";
 const LOADING = "GET_LOADING";
 const SEARCH_VALUE = "SEARCH_VALUE";
-const GET_BOOKS = "GET_MORE_BOOKS"; //не подгружать книги в тот же массив
-const ADD_BOOKS = "ADD_BOOKS"; //добавлять в тот же массив книги
+const RESET_SELECTED_BOOK = "RESET_SELECTED_BOOK";
+const CHANGE_SORTING = "CHANGE_SORTING";
+const ERROR = "ERROR";
 
 export const reducer = (state = defaultState, action) => { //создали редюсер(обычная ф-ция). принимает 2 параметра: состояние и экшн(просто js обьект с полем type по которму определять как состояние будет изменяться). 
   switch (action.type) { //в зависимости от типа отрабатывает case
     case SELECT_BOOK:
       return {...state, selectedBook: action.payload}//состояние не изменяемое, поэтому мы каждый раз создаем новый обьект с старым состоянием и изменяем поле.
-    case BOOKS:
+    case SET_BOOKS:
+      return {...state, books: action.payload}
+    case ADD_BOOKS:
       return {...state, books: [...state.books, ...action.payload]}
     case TOTALBOOKS:
       return {...state, totalBooks: action.payload}
@@ -30,21 +36,27 @@ export const reducer = (state = defaultState, action) => { //создали ре
       return {...state, loading: action.payload}
     case SEARCH_VALUE:
       return {...state, searchValue: action.payload}
-    case GET_BOOKS:
-      return {...state, books: [...action.payload]}
-    case ADD_BOOKS:
-      return {...state, books: [...state.books, ...action.payload]}
+    case RESET_SELECTED_BOOK: 
+      return {...state, selectedBook: undefined}
+    case CHANGE_SORTING:
+      return {...state, orderBy: action.payload}
+    case ERROR:
+      return {...state, error: action.payload}
     default:
       return state //по дефолту возвращает состояние(текущее)
   }
 }
 
+//action creators 
+
 export const selectBookAction = (payload) => ({type: SELECT_BOOK, payload});
-export const booksAction = (payload) => ({type: BOOKS, payload});
+export const setBooksAction = (payload) => ({type: SET_BOOKS, payload});
+export const addBooksAction = (payload) => ({type: ADD_BOOKS, payload});
 export const totalBooksAction = (payload) => ({type: TOTALBOOKS, payload});
 export const loadingAction = (payload) => ({type: LOADING, payload});
 export const searchValueAction = (payload) => ({type: SEARCH_VALUE, payload});
-export const getBooksAction = (payload) => ({type: BOOKS, payload});
-export const addBooksAction= (payload) => ({type: GET_BOOKS, payload});
+export const resetSelectedBookAction = () => ({type: RESET_SELECTED_BOOK});
+export const changeSortingAction = (payload) => ({type: CHANGE_SORTING, payload});
+export const errorAction = (payload) => ({type: ERROR, payload});
 
-export const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk))); //cоздали стор. Обьект сожержит методы полчения состояния getState, изменить состояние - диспатч.
+export const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk))); //cоздали стор. Обьект содержит методы получения состояния getState, изменить состояние - диспатч.

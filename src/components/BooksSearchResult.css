@@ -1,0 +1,16 @@
+label {
+    display: block;
+    padding-top: 50px;
+    text-align: center;
+    font-size: 30px;
+}
+
+button {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 5%;
+    background: #cacaca55;
+    border: #cacaca55;
+    font-size: 30px;
+    color: rgb(87, 83, 83);
+}

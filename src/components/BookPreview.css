@@ -1,11 +1,39 @@
 .book-preview {
     margin-top: 50px;
+    position: relative;
+}
+
+.close {
+    cursor: pointer; 
+    position: absolute; 
+    top: 5%; 
+    right: 5%;
+}
+
+.close:before, .close:after {
+    content: ""; 
+    position: absolute; 
+    width: 24px; 
+    height: 4px; 
+    background: gray;
+}
+
+.close:before {
+    transform: rotate(45deg);
+}
+.close:after {
+    transform: rotate(-45deg);
 }
 
 .book-preview__content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     
+}
+
+.book-preview-header {
+    display: flex;
+    flex-direction: row;
 }
 
 .book-preview-img {
@@ -22,4 +50,18 @@
 .book-preview-text {
     padding: 20px;
     line-height: 50px;
+}
+
+.book-preview-title {
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.book-details {
+    color: rgb(87, 83, 83);;
+}
+
+.book-preview-description {
+    margin-top: 50px;
+    line-height: 25px;
 }

@@ -2,12 +2,13 @@ import React from "react";
 import './Search.css';
 import loupe from '../assets/loupe.png';
 import { getBooksByTitleAction } from "../store/asyncActions";
-import { searchValueAction } from "../store/store";
+import { searchValueAction, changeSortingAction } from "../store/store";
 import { useDispatch, useSelector } from "react-redux";
 
 const Search = () => { //делаем поиск
   const dispatch = useDispatch(); //создали диспач
   const searchValue = useSelector(state => state.searchValue); //запрос
+  //const sortValue = useSelector(state => state.orderBy)
 
   const handleKeyDown = (event) => { //обработчик на кнопку интер
     if (event.key === "Enter") { //при условии что нажали интер
@@ -17,6 +18,11 @@ const Search = () => { //делаем поиск
 
   const handleChange = (event) => { //обработчик изменений в инпуте
     dispatch(searchValueAction(event.target.value)); //передали экшн с запросом 
+  };
+
+  const handleSorting = (event) => {
+    dispatch(changeSortingAction(event.target.value));
+    dispatch(getBooksByTitleAction(searchValue));
   };
         //render
   return (
@@ -40,7 +46,7 @@ const Search = () => { //делаем поиск
         <p>Categories</p>
         <form className="filter">
           <select className="genre" size="1">
-            <option value="all" selected="selected">
+            <option value="all">
               All
             </option>
             <option value="art">Art</option>
@@ -54,8 +60,8 @@ const Search = () => { //делаем поиск
 
         <p>Sorting by</p>
         <form className="sorting">
-          <select className="genre" size="1">
-            <option value="relevance" selected="selected">
+          <select className="genre" size="1" onChange={handleSorting}>
+            <option value='relevance'>
               Relevance
             </option>
             <option value="newest">Newest</option>

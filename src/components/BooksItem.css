@@ -4,10 +4,23 @@
     word-break: break-word;
 }
 
+.book__content:hover {
+    transform: scale(1.2);
+    background-color: #cacaca;
+}
+
 .book-img {
     text-align: center;
 }
 
 .book img {
     width: 90%;
+}
+
+.book-title {
+    margin-bottom: 10px;
+}
+
+.book-details {
+    color: rgb(87, 83, 83);
 }
