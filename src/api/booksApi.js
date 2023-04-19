@@ -11,7 +11,6 @@ export const getBooksByTitle = (title, sorting, startIndex = 0) => {
     return fetch(url)
         .then(response => response.json()) 
         .then(json => {
-            console.log(json.items.map(item => item.volumeInfo.categories))
             const res = {
                 totalBooks: 0,
                 books: []

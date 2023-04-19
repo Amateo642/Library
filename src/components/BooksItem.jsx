@@ -12,10 +12,10 @@ const BooksItem = ({book, onBookSelect}) => {
           <div className="book-img">
             <img src={smallThumbnail} alt="image" />
           </div>
-          <div>
+          <div className="book__content-text">
             <p className="book-title">{book.title}</p>
             <p className="book-details">Authors: {authors}</p>
-            <p className="book-details">Categories: {book.genre}</p>
+            <p className="book-details">Categories: {book.categories || 'Not available'}</p>
             <p className="book-details">Published: {published}</p>
           </div>
         </div>

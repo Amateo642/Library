@@ -19,8 +19,15 @@
 
 .book-title {
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .book-details {
     color: rgb(87, 83, 83);
+}
+
+@media (max-width: 768px) {
+    .book__content-text {
+        font-size: 35px;
+    }
 }

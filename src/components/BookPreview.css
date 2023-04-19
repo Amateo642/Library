@@ -65,3 +65,35 @@
     margin-top: 50px;
     line-height: 25px;
 }
+
+@media (max-width: 992px) {
+    .close {
+        cursor: pointer; 
+        position: absolute; 
+        top: 5%; 
+        right: 10%;
+    }
+    .book-preview-img {
+        background: #cacaca55;
+        text-align: center;
+        padding: 50px;
+        margin: 20px;
+    }
+    .book-preview-header {
+        display: flex;
+        flex-direction: column;
+    }
+    .book-preview-text {
+        font-size: 40px;
+    }
+    .book-preview-title {
+        margin-top: 50px;
+        font-size: 50px;
+    }
+    .book-preview-description {
+        margin-top: 50px;
+        line-height: 50px;
+        padding: 10px;
+        font-size: 40px;
+    }
+}
