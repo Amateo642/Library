@@ -1,5 +1,5 @@
 import {getBooksByTitle} from "../api/booksApi"
-import { setBooksAction, addBooksAction, loadingAction, totalBooksAction, errorAction } from "./store";
+import { setBooksAction, addBooksAction, loadingAction, totalBooksAction, errorAction, changeGenreAction } from "./store";
 
 export const getBooksByTitleAction = (title) => { //по запросу получаем книги
   if (!title) {
@@ -41,16 +41,3 @@ export const getMoreBooksAction = () => { // получить больше кн�
             });
     }
 }
-
-// export const getSortingBooksAction = (sorting) => {
-//   return function(dispatch, getState) {
-//     const {books} = getState();
-//       dispatch(loadingAction(true));
-//       getBooksByTitle(books, sorting)
-//       .then(({books}) => {
-//         dispatch(sortingBooksAction(sorting))
-//         dispatch(booksAction(books));
-//         dispatch(loadingAction(false));
-//       })
-//   }
-// }

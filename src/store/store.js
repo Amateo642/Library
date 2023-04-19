@@ -9,7 +9,8 @@ const defaultState = { //дефолтное состояние, присваив
     loading: false,
     searchValue: "",
     orderBy: 'relevance',
-    error: false
+    error: false,
+    genre: 'All'
 };
 
 const SELECT_BOOK = "SELECT_BOOK";
@@ -21,6 +22,7 @@ const SEARCH_VALUE = "SEARCH_VALUE";
 const RESET_SELECTED_BOOK = "RESET_SELECTED_BOOK";
 const CHANGE_SORTING = "CHANGE_SORTING";
 const ERROR = "ERROR";
+const CHANGE_GENRE = "CHANGE_GENRE";
 
 export const reducer = (state = defaultState, action) => { //создали редюсер(обычная ф-ция). принимает 2 параметра: состояние и экшн(просто js обьект с полем type по которму определять как состояние будет изменяться). 
   switch (action.type) { //в зависимости от типа отрабатывает case
@@ -42,6 +44,8 @@ export const reducer = (state = defaultState, action) => { //создали ре
       return {...state, orderBy: action.payload}
     case ERROR:
       return {...state, error: action.payload}
+    case CHANGE_GENRE:
+      return {...state, genre: action.payload}
     default:
       return state //по дефолту возвращает состояние(текущее)
   }
@@ -58,5 +62,6 @@ export const searchValueAction = (payload) => ({type: SEARCH_VALUE, payload});
 export const resetSelectedBookAction = () => ({type: RESET_SELECTED_BOOK});
 export const changeSortingAction = (payload) => ({type: CHANGE_SORTING, payload});
 export const errorAction = (payload) => ({type: ERROR, payload});
+export const changeGenreAction = (payload) => ({type: CHANGE_GENRE, payload});
 
 export const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk))); //cоздали стор. Обьект содержит методы получения состояния getState, изменить состояние - диспатч.

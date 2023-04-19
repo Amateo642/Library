@@ -23,7 +23,7 @@ const handleSelectedBook = () => {
             <div className="book-preview-text">
               <p className="book-preview-title">{book.title}</p>
               <p className="book-details">Authors: {book.authors}</p>
-              <p className="book-details">Categories: {book.genre}</p>
+              <p className="book-details">Categories: {book.categories || 'Not available'}</p>
               <p className="book-details">Published: {book.year}</p>
             </div>
           </div>

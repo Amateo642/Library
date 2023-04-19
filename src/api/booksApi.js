@@ -11,7 +11,7 @@ export const getBooksByTitle = (title, sorting, startIndex = 0) => {
     return fetch(url)
         .then(response => response.json()) 
         .then(json => {
-            console.log(json)
+            console.log(json.items.map(item => item.volumeInfo.categories))
             const res = {
                 totalBooks: 0,
                 books: []
@@ -26,19 +26,17 @@ export const getBooksByTitle = (title, sorting, startIndex = 0) => {
                     const info = item.volumeInfo;
                     const thumbnail = info.imageLinks && info.imageLinks.thumbnail;
                     const smallThumbnail = info.imageLinks && info.imageLinks.smallThumbnail;
-                    const categories = info.categories && info.categories[0];
-                    const category = categories && categories.split(' ', 1);
+                    const categories = info.categories && info.categories[0] || '';
                     const published = info.publishedDate;
 
                     return ({
                         authors: info.authors,
                         thumbnail: thumbnail,
                         smallThumbnail: smallThumbnail,
-                        categories: info.categories,
+                        categories: categories,
                         title: info.title,
                         description: info.description,
                         id: item.id,
-                        genre: category,
                         year: published
                     });
                 });

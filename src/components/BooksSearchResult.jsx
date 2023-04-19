@@ -11,6 +11,7 @@ function BooksSearchResult() {
   const books = useSelector(state => state.books);
   const totalBooks = useSelector(state => state.totalBooks);
   const error = useSelector(state => state.error);
+  const genre = useSelector(state => state.genre);
 
   function handleBookSelect(book) { 
     dispatch(selectBookAction(book)) 
@@ -28,7 +29,7 @@ function BooksSearchResult() {
     <>
       {totalBooks !== undefined && <label>Found {totalBooks} books</label>}      
       
-      <BooksList books={books} onBookSelect={handleBookSelect} />
+      <BooksList books={books} onBookSelect={handleBookSelect} genre={genre}/>
       
       {totalBooks - books.length > 0 && !loading &&
         <div className="pagination">

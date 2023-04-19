@@ -4,7 +4,7 @@ import './BooksItem.css';
 const BooksItem = ({book, onBookSelect}) => {
   const smallThumbnail = book.smallThumbnail === undefined ? 'https://www.penn.museum/collections/images/image_not_available_300.jpg' : book.smallThumbnail;
   const authors = book.authors === undefined ? 'Not available' : book.authors.join(', ');
-  const published = book.year === undefined || book.year === '0000' ? 'not available': book.year.substring(0, 4);
+  const published = book.year === undefined || book.year === '0000' ? 'Not available': book.year.substring(0, 4);
 
     return (
       <div className="book" onClick={() => onBookSelect(book)}>

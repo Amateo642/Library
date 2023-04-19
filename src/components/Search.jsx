@@ -2,7 +2,7 @@ import React from "react";
 import './Search.css';
 import loupe from '../assets/loupe.png';
 import { getBooksByTitleAction } from "../store/asyncActions";
-import { searchValueAction, changeSortingAction } from "../store/store";
+import { searchValueAction, changeSortingAction, changeGenreAction } from "../store/store";
 import { useDispatch, useSelector } from "react-redux";
 
 const Search = () => { //делаем поиск
@@ -24,6 +24,10 @@ const Search = () => { //делаем поиск
     dispatch(changeSortingAction(event.target.value));
     dispatch(getBooksByTitleAction(searchValue));
   };
+
+  const handleChangeCategories = (event) => {
+    dispatch(changeGenreAction(event.target.value));
+  }
         //render
   return (
     <div className="search">
@@ -45,16 +49,16 @@ const Search = () => { //делаем поиск
       <div className="selects-wrapper">
         <p>Categories</p>
         <form className="filter">
-          <select className="genre" size="1">
-            <option value="all">
+          <select className="genre" size="1" onChange={handleChangeCategories}>
+            <option value="All">
               All
             </option>
-            <option value="art">Art</option>
-            <option value="biography">Biography</option>
-            <option value="computers">Computers</option>
-            <option value="history">History</option>
-            <option value="medical">Medical</option>
-            <option value="poetry">Poetry</option>
+            <option value="Art">Art</option>
+            <option value="Biography">Biography</option>
+            <option value="Computers">Computers</option>
+            <option value="History">History</option>
+            <option value="Medical">Medical</option>
+            <option value="Poetry">Poetry</option>
           </select>
         </form>
 
